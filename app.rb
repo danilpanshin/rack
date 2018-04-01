@@ -6,7 +6,7 @@ class App
     
     @request = Rack::Request.new(env)
     @user_format = Rack::Utils.parse_nested_query(@request.query_string).values.join.split(",")
-    
+    request
     [@status, headers, @body]
   end
 
