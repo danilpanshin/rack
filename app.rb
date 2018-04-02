@@ -1,4 +1,4 @@
-require_relative 'time'
+require_relative 'time_formatter'
 
 class App
 
@@ -24,7 +24,7 @@ class App
   end
 
   def handle_one_request    
-    @body = Time.new(@user_format)
+    @body = TimeFormatter.new(@user_format)
     if @body.acceptably?
       @status = 200
     else

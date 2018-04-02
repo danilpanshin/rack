@@ -1,10 +1,10 @@
 
 
-class Time
+class TimeFormatter
 
   def initialize(array)
     
-    @format = array
+    @format = ["year", "month", "hour"]
     @acceptable_format = %w(year month day hour minute second)
     return_time
 
