@@ -24,11 +24,15 @@ class App
   end
 
   def handle_one_request    
-    @body = TimeFormatter.new(@user_format)
-    if @body.acceptably?
+    time_formatter = TimeFormatter.new(@user_format)
+    
+    
+    if time_formatter.acceptably?
       @status = 200
+      @body = ["#{time_formatter.return_time}"]
     else
       @status = 400
+      @body = ["Unknown time format #{time_formatter.return_time}"]
     end    
   end
 

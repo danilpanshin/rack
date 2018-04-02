@@ -4,9 +4,9 @@ class TimeFormatter
 
   def initialize(array)
     
-    @format = ["year", "month", "hour"]
+    @format = array
     @acceptable_format = %w(year month day hour minute second)
-    return_time
+    #return_time
 
   end
 
