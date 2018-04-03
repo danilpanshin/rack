@@ -2,30 +2,29 @@ require_relative 'time_formatter'
 
 class App
 
-  def call(env)  
-    
+  def call(env)    
     @request = Rack::Request.new(env)
-    @user_format = Rack::Utils.parse_nested_query(@request.query_string).values.join.split(",")
-    request
-    [@status, headers, @body]
+    request_time
+    Rack::Response.new(@body, @status, headers)
   end
 
   private 
 
-  def request
+  def request_time
 
     case @request.path 
     when  "/time"
-      handle_one_request
+      handle_time_request
     else
       not_found
     end     
 
   end
 
-  def handle_one_request    
-    time_formatter = TimeFormatter.new(@user_format)
-    
+  def handle_time_request 
+
+    user_format = Rack::Utils.parse_nested_query(@request.query_string).values.join.split(",")   
+    time_formatter = TimeFormatter.new(user_format)    
     
     if time_formatter.acceptably?
       @status = 200

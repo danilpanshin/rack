@@ -6,8 +6,7 @@ class TimeFormatter
     
     @format = array
     @acceptable_format = %w(year month day hour minute second)
-    #return_time
-
+    
   end
 
   def acceptably?
